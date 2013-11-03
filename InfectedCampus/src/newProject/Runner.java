@@ -63,21 +63,49 @@ public class Runner {
         switch (itemUsed) {
             case 1:
                 this.itemCount[0]--;
+                Uncleans.weaken(1, this.OSU.getCoord());
                 break;
             case 2:
                 this.itemCount[1]--;
+                Uncleans.weaken(2, this.OSU.getCoord());
                 break;
             case 3:
                 this.itemCount[2]--;
+                Uncleans.weaken(3, this.OSU.getCoord());
                 break;
             case 4:
                 this.itemCount[3]--;
+                Uncleans.weaken(4, this.OSU.getCoord());
                 break;
             case 5:
                 this.itemCount[4]--;
                 break;
             default:
                 this.survivor.died();
+                break;
+        }
+        int escapeOdds = Uncleans.escape(this.OSU.getCoord());
+        int liveOrDie = (int) (this.rnd.nextDouble() * 10);
+        switch (escapeOdds) {
+            case 1:
+                if (liveOrDie > 2) {
+                    this.survivor.died();
+                }
+                break;
+            case 2:
+                if (liveOrDie > 4) {
+                    this.survivor.died();
+                }
+                break;
+            case 3:
+                if (liveOrDie > 7) {
+                    this.survivor.died();
+                }
+                break;
+            case 4:
+                if (liveOrDie > 9) {
+                    this.survivor.died();
+                }
                 break;
         }
     }
