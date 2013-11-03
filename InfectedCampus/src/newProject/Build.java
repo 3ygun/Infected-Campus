@@ -8,7 +8,11 @@ public class Build extends CampusGrid {
 		//	Builds campus map
 	}
 	
-	Build(Object E6grid) {
+	Build(D3Grid d3grid) {
+		
+	}
+	
+	Build(E3Grid e3grid) {
 		//	Builds the E6 Grid
 	}
 }
