@@ -13,7 +13,7 @@ public class UserInput {
 	
 	public static int nextMove(int max) {
 		int move = in.nextInteger();
-		while(move > 0 && move <= max)
+		while(!(move > 0 && move <= max))
 		{
 			System.out.print("You have entered an invalid command, please enter a valid command: ");
 			move = in.nextInteger();

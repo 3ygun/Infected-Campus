@@ -22,6 +22,7 @@ public class Build extends JFrame {
 	private DrawingTool god = new DrawingTool(new SketchPad(1000,1000));
 	
 	Build() {
+		new InterfaceRunner();
 		god.setColor(Color.BLACK);
 		god.fillRect(500, 500);
 		//	Builds campus map

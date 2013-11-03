@@ -1,96 +1,116 @@
 package newProject;
+import java.util.ArrayList;
+
+import components.random.Random;
+import components.random.Random1L;
 import components.simplewriter.*;
 
 public class Runner {
-	private SimpleWriter out;
-	private User survivor;
-	private CampusGrid OSU;
+    SimpleWriter out;
+    User survivor;
+    CampusGrid OSU;
+    int[] itemCount = new int[5];
 
 //----------------------------------------------------------------------------------------------------------------
 //  Constructor
 //----------------------------------------------------------------------------------------------------------------
-	    Runner() {
-	    	System.out.println("Made it to Runner!");
-	    	
-	        //this.out = new SimpleWriter1L();
-	        survivor = new User();
-	        OSU = new CampusGrid();
+    Runner() {
+        this.out = new SimpleWriter1L();
+        this.survivor = new User();
+        this.OSU = new CampusGrid();
 
-	        //out.print(survivor.getName());
+        for (int i = 0; i < 5; i++) {
+            this.itemCount[i] = 0;
+        }
 
-	        while (this.survivor.isAlive()) {
-	            int move = this.survivor.getNextMove();
-	            switch (move) {
-	                case 1:	this.run();
-	                    	 break;
-	                case 2:	this.attack();
-	                    	 break;
-	                case 3:	this.alert();
-	                		 break;
-	                case 4: this.search();
-	                    	 break;
-	            }
-	        }
-	    }
+        //out.print(survivor.getName());
 
-//----------------------------------------------------------------------------------------------------------------
+        while (this.survivor.isAlive()) {
+            int move = this.survivor.getNextMove();
+
+            switch (move) {
+                case 1:
+                    this.run();
+                    break;
+                case 2:
+                    this.attack();
+                    break;
+                case 3:
+                    ArrayList<String> newItems = this.search();
+                    for (int x = 0; x < newItems.size(); x++) {
+                        if (newItems.get(x).equals("gloves")) {
+                            this.itemCount[0]++;
+                        } else if (newItems.get(x).equals("bat")) {
+                            this.itemCount[1]++;
+                        } else if (newItems.get(x).equals("knife")) {
+                            this.itemCount[2]++;
+                        } else if (newItems.get(x).equals("gun")) {
+                            this.itemCount[3]++;
+                        } else {
+                            this.itemCount[4]++;
+                        }
+                    }
+                    break;
+            }
+        }
+    }
+
+//------------------------------------------------------------------------------
 //  Private Methods
-//----------------------------------------------------------------------------------------------------------------
-	    private void run() {
-	        int move2 = this.survivor.getNextMove();
-	        switch (move2) {
-	            case 1:
-	                break;
-	            case 2:
-	                break;
-	            case 3:
-	                break;
-	            case 4:
-	                break;
-	        }
-	    }
+//------------------------------------------------------------------------------
+    private void attack() {
+        int itemUsed = this.survivor.getNextMove();
+        switch (itemUsed) {
+            case 1:
+                this.itemCount[0]--;
+                break;
+            case 2:
+                this.itemCount[1]--;
+                break;
+            case 3:
+                this.itemCount[2]--;
+                break;
+            case 4:
+                this.itemCount[3]--;
+                break;
+            case 5:
+                this.itemCount[4]--;
+                break;
+            default:
+                this.survivor.died();
+                break;
+        }
+    }
 
-	    private void attack() {
-	        int move3 = this.survivor.getNextMove();
-	        switch (move3) {
-	            case 1:
-	                break;
-	            case 2:
-	                break;
-	            case 3:
-	                break;
-	            case 4:
-	                break;
-	        }
-	    }
+    private void run() {
+        int move3 = this.survivor.getNextMove();
+        switch (move3) {
+            case 1:
+                this.OSU.changeCoord(0);
+                break;
+            case 2:
+                this.OSU.changeCoord(1);
+                break;
+            case 3:
+                this.OSU.changeCoord(2);
+                break;
+            case 4:
+                this.OSU.changeCoord(3);
+                break;
+        }
+    }
 
-	    private void alert() {
-	        int move4 = this.survivor.getNextMove();
-	        switch (move4) {
-	            case 1:
-	                break;
-	            case 2:
-	                break;
-	            case 3:
-	                break;
-	            case 4:
-	                break;
-	        }
-	    }
+    private ArrayList<String> search() {
+        Random rnd = new Random1L();
 
-	    private void search() {
-	        int move5 = this.survivor.getNextMove();
-	        switch (move5) {
-	            case 1:
-	                break;
-	            case 2:
-	                break;
-	            case 3:
-	                break;
-	            case 4:
-	                break;
-	        }
-	    }
-	}
+        int itemNum = (int) rnd.nextDouble() * 2;
+
+        Items inventory = new Items();
+        ArrayList<String> itemsFound = inventory.Items(itemNum);
+
+        return itemsFound;
+    }
+}
+
 
 

@@ -17,9 +17,10 @@ public class CampusGrid {
 		System.out.println("Made it to Campus Grid!");
 		
 		rnd = new Random1L();
+		grid = new Build();
 		genCoordHackaThon();
 		dispLocation();
-		grid = new Build();
+	
 		
 		
 		/*
@@ -44,7 +45,7 @@ public class CampusGrid {
 		return (""+(char)((int)(myCoord/10)+65)+""+(myCoord%10+1));
 	}
 	
-	public static void changeCord(int direction) {
+	public static void changeCoord(int direction) {
 		switch (direction) {
 			case 0:		myCoord = getCoord()-1;
 						 break;

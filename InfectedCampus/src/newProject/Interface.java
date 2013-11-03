@@ -7,28 +7,34 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;		//enter into a text box
 import javax.swing.JPasswordField;
 import javax.swing.JOptionPane;
+import javax.swing.JButton;
 
 public class Interface extends JFrame {
 	private JTextField inField;
 	private JTextField disField;
 	private JTextField mainField;
+	private JButton startButton;
 	private String myUserIn;
 	
 	Interface() {
 		super("InfectedCampus");
 		setLayout(new FlowLayout());
 		
-		mainField = new JTextField("picture",800);
+		mainField = new JTextField("picture",100);
 		 mainField.setEditable(false);
 		 add(mainField);
-		disField = new JTextField("uneditable",200);
+		disField = new JTextField("uneditable",100);
 		 disField.setEditable(false);
 		 add(disField);
-		inField = new JTextField(1000);
+		inField = new JTextField(100);
 		 add(inField);
+		startButton = new JButton();
+		 
 		 
 		CheckInput cIn = new CheckInput();
 		 inField.addActionListener(cIn);
+		 startButton.addActionListener(cIn);
+		 
 	}
 	
 	
@@ -42,6 +48,8 @@ public class Interface extends JFrame {
 		public void actionPreformed(ActionEvent event) {
 			if(event.getSource() == inField)
 				myUserIn = String.format("%s", event.getActionCommand());
+			else if(event.getSource() == startButton)
+				new Runner();
 			else
 				{}
 			JOptionPane.showMessageDialog(null,getUserIn());

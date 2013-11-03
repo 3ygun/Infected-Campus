@@ -17,7 +17,7 @@ public class User {
 		/*
 		 * Get the list value, from the user, of the users next move
 		 */
-		int max=2; //# of elements displayed on the screen
+		int max=3; //# of elements displayed on the screen
 		
 		return UserInput.nextMove(max);
 	}
@@ -28,6 +28,10 @@ public class User {
 	
 	public String getName() {
 		return myName;
+	}
+	
+	public void died() {
+		alive = false;
 	}
 	
 }
