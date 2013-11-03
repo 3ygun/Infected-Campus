@@ -6,6 +6,7 @@ public class CampusGrid {
 	private static Build grid;
 	private static Random rnd;
 	private static int myCoord;
+	
 	//private static final int[][] gridCords = new int[10][5];	*9  and *4
 	
 	
@@ -13,8 +14,14 @@ public class CampusGrid {
 //	Constructors
 //----------------------------------------------------------------------------------------------------------------
 	CampusGrid() {
+		System.out.println("Made it to Campus Grid!");
+		
 		rnd = new Random1L();
 		genCoordHackaThon();
+		dispLocation();
+		grid = new Build();
+		
+		
 		/*
 		 * for (int x=0; x<10; x++) {
 			for (int y=0; y<5; y++) {

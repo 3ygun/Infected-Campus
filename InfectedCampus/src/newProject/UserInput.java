@@ -1,6 +1,6 @@
 package newProject;
 import components.simplereader.*;
-import components.simplewriter.*;
+
 
 public class UserInput {
 	private static SimpleReader in = new SimpleReader1L();

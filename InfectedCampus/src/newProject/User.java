@@ -1,7 +1,5 @@
 package newProject;
 
-import components.random.Random;
-
 
 public class User {
 	private static String myName;
@@ -9,6 +7,7 @@ public class User {
 	
 	
 	User() {
+		System.out.println("Made it to User!");
 		//	Output on other screen
 		myName = UserInput.assignName();
 		alive = true;
